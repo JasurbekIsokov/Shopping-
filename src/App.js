@@ -8,8 +8,9 @@ import Register from "./Components/Register.js";
 import NotFound from "./Components/NotFound.js";
 import ProductList from "./Components/ProductList.js";
 import ProductDetails from "./Components/ProductDetails.js";
-import "./Assets/Style/spinner.css";
 import ResultSucces from "./Components/ResultSucces.js";
+import "./Assets/Style/spinner.css";
+import "./Assets/Style/product_list.css";
 
 function App() {
   return (

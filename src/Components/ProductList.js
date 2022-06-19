@@ -31,8 +31,10 @@ const ProductList = () => {
       {product.allProduct.product.length === 0 ? (
         <Spinner />
       ) : (
-        <div className="ui grid container">
+        <div className="ui grid container ">
+          {/* <div className="product_list"> */}
           <ProductComponent />
+          {/* </div> */}
         </div>
       )}
     </>

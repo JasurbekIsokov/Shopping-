@@ -1,0 +1,6 @@
+.product_list {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 15px;
+}
