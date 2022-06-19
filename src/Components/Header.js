@@ -13,6 +13,12 @@ const Header = () => {
             <i className="shop icon" />
           </div>
         </div>
+        <Link to="/login">
+          <a className="item">Sign In</a>
+        </Link>
+        <Link to="/register">
+          <a className="item">Sign Up</a>
+        </Link>
       </div>
     </div>
   );
