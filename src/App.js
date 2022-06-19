@@ -1,14 +1,9 @@
 import React from "react";
-import { useState } from "react";
+
+import Header from "./Components/Header.js";
 
 function App() {
-  let [timer, setTimer] = useState(1);
-
-  return (
-    <div className="App">
-      <h1>Assalomu alaykum</h1>
-    </div>
-  );
+  return <Header />;
 }
 
 export default App;
