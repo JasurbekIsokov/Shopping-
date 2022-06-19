@@ -1,4 +1,4 @@
-import { actionType } from "../Containers/Constants";
+import { actionType } from "../Constants/Constants";
 
 export const getProducts = (products) => {
   return {
