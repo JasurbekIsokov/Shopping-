@@ -12,3 +12,12 @@ export const productReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export const selectProductReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case actionType.SELECT_PRODUCT:
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};
