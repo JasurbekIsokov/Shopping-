@@ -9,6 +9,7 @@ import NotFound from "./Components/NotFound.js";
 import ProductList from "./Components/ProductList.js";
 import ProductDetails from "./Components/ProductDetails.js";
 import "./Assets/Style/spinner.css";
+import ResultSucces from "./Components/ResultSucces.js";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/product/:productId" element={<ProductDetails />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/account" element={<ResultSucces />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </Router>

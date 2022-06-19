@@ -1,28 +1,63 @@
+import { useState } from "react";
+import axios from "axios";
+import { notification } from "antd";
 import Header from "./Header";
 
 const Login = () => {
-  const onFinish = (values) => {
-    console.log("Success:", values);
-  };
+  const [testUserName, setTestUserName] = useState();
+  const [testPassword, setTestPassword] = useState();
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+  const openErrorMessage = (text) => {
+    notification.error({
+      message: `${text}`,
+      placement: "top",
+    });
+  };
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      let isHave = false;
+      const res = await axios.get("http://localhost:3004/users");
+      console.log(res.data, testUserName, testPassword);
+
+      res.data.forEach(function (val) {
+        if (val.username === testUserName && val.password === testPassword) {
+          isHave = true;
+          window.location.replace("/account");
+        }
+      });
+      if (!isHave) openErrorMessage("User Name or Password Error!");
+    } catch (err) {
+      console.log(err.message);
+    }
   };
 
   return (
     <>
       <Header />
       <div className="ui container" style={{ padding: "5% 20%" }}>
-        <form class="ui form">
-          <div class="field">
+        <form className="ui form" onSubmit={submitHandler}>
+          <div className="field">
             <label>User Name</label>
-            <input type="text" name="user-name" placeholder="User Name" />
+            <input
+              type="text"
+              name="user-name"
+              placeholder="User Name"
+              required
+              onChange={(e) => setTestUserName(e.target.value)}
+            />
           </div>
-          <div class="field">
+          <div className="field">
             <label>Password</label>
-            <input type="password" name="password" placeholder="Password" />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+              onChange={(e) => setTestPassword(e.target.value)}
+            />
           </div>
-          <button class="ui button" type="submit">
+          <button className="ui button" type="submit">
             Submit
           </button>
         </form>
