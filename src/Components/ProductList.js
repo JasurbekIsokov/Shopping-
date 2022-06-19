@@ -1,10 +1,11 @@
-import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
 
 import Header from "./Header";
-import { getProducts } from "../Services/Actions/Actions";
+import Spinner from "./Spinner";
 import ProductComponent from "./ProductComponent";
+import { getProducts } from "../Services/Actions/Actions";
 
 const ProductList = () => {
   const product = useSelector((state) => state);
@@ -27,9 +28,13 @@ const ProductList = () => {
   return (
     <>
       <Header />
-      <div className="ui grid container">
-        <ProductComponent />
-      </div>
+      {product.allProduct.product.length === 0 ? (
+        <Spinner />
+      ) : (
+        <div className="ui grid container">
+          <ProductComponent />
+        </div>
+      )}
     </>
   );
 };

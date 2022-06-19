@@ -6,6 +6,7 @@ import "antd/dist/antd.css";
 import NotFound from "./Components/NotFound.js";
 import ProductList from "./Components/ProductList.js";
 import ProductDetails from "./Components/ProductDetails.js";
+import "./Assets/Style/spinner.css";
 
 function App() {
   return (

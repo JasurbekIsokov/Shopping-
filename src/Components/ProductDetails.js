@@ -4,7 +4,11 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import Header from "./Header";
-import { selectProduct } from "../Services/Actions/Actions";
+import {
+  selectProduct,
+  removeSelectedProduct,
+} from "../Services/Actions/Actions";
+import Spinner from "./Spinner";
 
 const ProductDetails = () => {
   const product = useSelector((state) => state.product);
@@ -27,15 +31,20 @@ const ProductDetails = () => {
 
   useEffect(() => {
     if (productId && productId !== "") axiosProductDetail();
+
+    return () => {
+      dispatch(removeSelectedProduct());
+    };
   }, [productId]);
 
   return (
     <div>
       <Header />
-      <div className="ui grid container">
-        {Object.keys(product).length === 0 ? (
-          <div>...loading</div>
-        ) : (
+
+      {Object.keys(product).length === 0 ? (
+        <Spinner />
+      ) : (
+        <div className="ui grid container">
           <div className="ui placeholder segment">
             <div className="ui two column stackable center aligned grid">
               <div className="ui vertical divider">AND</div>
@@ -60,8 +69,8 @@ const ProductDetails = () => {
               </div>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

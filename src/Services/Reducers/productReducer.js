@@ -13,7 +13,7 @@ export const productReducer = (state = initialState, action) => {
   }
 };
 
-export const selectProductReducer = (state = initialState, action) => {
+export const selectProductReducer = (state = {}, action) => {
   switch (action.type) {
     case actionType.SELECT_PRODUCT:
       return { ...state, ...action.payload };
